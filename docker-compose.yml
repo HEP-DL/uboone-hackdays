@@ -1,0 +1,8 @@
+version: '2.0'
+services:
+  dl:
+    build: .
+    volumes: 
+      - ./data:/data
+      - ./models:/models
+
