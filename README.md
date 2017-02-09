@@ -28,8 +28,11 @@ The goal of the instructions below is to start the container and issue some addi
 You can automatically start up the docker container and attach to it using the following command. For the sake of this hackday, I'm going to assume that this command is being run from `uboone-hackdays`.
 
 ~~~ bash
+  cd uboone-hackdays
   docker run -ti -v$(pwd):/workspace -p8888:8888 --name uboone  kwierman/hep-dl
 ~~~
+
+If this is your first time running, it should begin by pulling the image from dockerhub. This can take time.
 
 On first startup, this should put the user in the home directory. The environment variables specific to the software are left initially unset for testing purposes. The command to setup the environment and thus the first command to run is:
 
