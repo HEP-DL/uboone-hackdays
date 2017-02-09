@@ -23,28 +23,30 @@ Let me know if you have any problems pulling the software or the data, and I’l
 
 ## Starting up the Docker container:
 
+The goal of the instructions below is to start the container and issue some additional commands to make it ready for the 
+
 You can automatically start up the docker container and attach to it using the following command. For the sake of this hackday, I'm going to assume that this command is being run from `uboone-hackdays`.
 
 ~~~ bash
   docker run -ti -v$(pwd):/workspace -p8888:8888 --name uboone  kwierman/hep-dl
 ~~~
 
-On first startup, this should dump the user in the home directory. The environment variables specific to the software are left initially empty for testing purposes. Therefore, the first command to be issued is:
+On first startup, this should put the user in the home directory. The environment variables specific to the software are left initially unset for testing purposes. The command to setup the environment and thus the first command to run is:
 
 ~~~ bash
   source setup.sh
 ~~~
 
-Since the above `docker run` command attaches the `uboone-hackdays` filespace to the container filesyste, this can be accessed via:
+Since the initial `docker run` command attaches the `uboone-hackdays` directory to the container filesystem, this directory can be accessed via:
 
 ~~~ bash
   cd /workspace
 ~~~
 
-There is one final step before we're ready to run work in the container. A shell script has been deposited here for working with `jupyter notebook` which will be the method by which we interact with caffe post-training. This script can be run via the following:
+There is one final step before we're ready to work in the container. A shell script has been deposited here for working with `jupyter notebook` which will be the method by which we interact with caffe post-training. This script can be run via the following:
 
 ~~~ bash
-. setup_notebook.sh
+  . setup_notebook.sh
 ~~~
 
 Once this script completes, the container will be ready to use for the hackdays.
@@ -54,8 +56,8 @@ Once this script completes, the container will be ready to use for the hackdays.
 For the second half of this exercise, we'll be working with jupyter notebooks. The command to start the notebook can be found here:
 
 ~~~ bash
-cd /workspace
-jupyter-notebook
+  cd /workspace
+  jupyter-notebook
 ~~~
 
 For the first instance of running the notebook server, the URL output by the console will need to be entered into your local browser.
