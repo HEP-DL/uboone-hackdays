@@ -1,8 +1,8 @@
 version: '2.0'
 services:
-  dl:
+  notebook:
     build: .
     volumes: 
       - ./data:/data
       - ./models:/models
-
+      - ./notebooks:/notebooks

@@ -1,16 +1,15 @@
 FROM kwierman/hep-dl
 
+CMD "sh" "-c" "echo nameserver 8.8.8.8 > /etc/resolv.conf"
+
 # Install the remaining dependencies
+RUN apt-get update
 RUN apt-get install -y wget
-RUN pip install jupyter
+RUN pip install --upgrade pip
+RUN pip install notebook
 
-# Now Download the data
-RUN wget ec2-54-213-91-246.us-west-2.compute.amazonaws.com/train.root /data/.
-RUN wget ec2-54-213-91-246.us-west-2.compute.amazonaws.com/test.root /data/.
-
-# And Download the models
-RUN wget ec2-54-213-91-246.us-west-2.compute.amazonaws.com/*.h5 /models/.
-RUN wget ec2-54-213-91-246.us-west-2.compute.amazonaws.com/*.cfg /models/.
-RUN wget ec2-54-213-91-246.us-west-2.compute.amazonaws.com/*.prototxt /models/.
+RUN mkdir /data
+RUN mkdir /notebooks
+RUN mkdir /models
 
 CMD /bin/bash
